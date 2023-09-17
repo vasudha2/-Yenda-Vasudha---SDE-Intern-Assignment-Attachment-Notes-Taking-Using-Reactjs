@@ -1,0 +1,234 @@
+
+.homepage-container {
+  max-height: calc(100vh - 40px); 
+  overflow-y: auto; 
+}
+
+.hg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+}
+
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  width: 120px; 
+  height: 40px; 
+  font-size: 16px; 
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s;
+}
+
+.floating-button:hover {
+  background-color: #0056b3; 
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  backdrop-filter: blur(5px); 
+}
+
+
+.search-sort {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 20px; 
+  gap: 20px; 
+}
+
+.search-sort input[type="text"] {
+  width: 60%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.search-sort select {
+  width: 35%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  padding: 0 10px; 
+}
+
+.form-scroll {
+  max-height: 300px; 
+  overflow-y: auto;
+}
+
+.note-card {
+  flex: 1; 
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-bottom: 20px; 
+}
+
+.note-card:hover {
+  transform: scale(1.02); 
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); 
+}
+
+.note-card h2 {
+  font-size: 20px; 
+}
+
+.note-description {
+  font-size: 16px; 
+  margin-top: 10px; 
+  max-height: 100px; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
+}
+
+.note-time {
+  font-size: 14px; 
+  color: #777; 
+  margin-top: 10px; 
+}
+
+.edit-form-container {
+  background-color: rgba(255, 255, 255, 0.9); 
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  backdrop-filter: blur(5px); 
+}
+
+.edit-form-container label {
+  font-size: 16px; 
+  margin-bottom: 8px;
+}
+
+.edit-form-container input[type="text"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.edit-form-container textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  margin-bottom: 16px;
+  resize: vertical;
+  min-height: 100px; 
+}
+
+.title-input,
+.link-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.text-editor {
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.media-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+.media-player {
+  max-width: 100%;
+  height: auto;
+}
+
+.media-image {
+  max-width: 100%;
+  height: auto;
+}
+.form-scroll {
+  max-height: 900px; 
+  overflow-y: auto; 
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .floating-button {
+    bottom: 10px;
+    right: 10px;
+    margin-bottom: 2px;
+  }
+  .form-container {
+    max-width: 9000px;
+
+    max-height: 9000px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+}
+
+.logout-button {
+  position: absolute; 
+  top: 10px; 
+  right: 10px; 
+  background-color: red;
+  color: white; 
+  padding: 8px 16px; 
+  border: none;
+  cursor: pointer;
+}
