@@ -11,36 +11,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        {}
-        <Route
-          path="/"
-          element={
-            isAuthenticated ? (
-              <Homepage />
-            ) : (
-              
-              <Login setIsAuthenticated={setIsAuthenticated} />
-            )
-          }
-        />
-
-        {}
-        <Route path="/Register" element={<Register />} />
-
-        {}
-        <Route
-          path="/Homepage"
-          element={
-            isAuthenticated ? (
-              <Homepage />
-            ) : (
-              <Navigate to="/" replace />
-            )
-          }
-        />
+        <Route path="/" element={<Login/>}/>
+        <Route path="/Register" element={<Register/>}/>
+        <Route path='/Homepage' element={<Homepage/>}/>
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
