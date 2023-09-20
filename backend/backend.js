@@ -1,6 +1,6 @@
 const express = require("express");
-const mysql = require('mysql');
-const cors = require('cors');
+const mysql = require("mysql");
+const cors = require("cors");
 const app = express();
 
 app.use(cors());
@@ -13,41 +13,32 @@ const db = mysql.createConnection({
   database: "user"
 });
 
-app.post('/user', (req, res) => {
+app.get("/", (req, res) => {
+  res.send("Welcome to the registration page!");
+});
+
+app.post("/user", async (req, res) => {
   const { name, email, password } = req.body;
-  const sql = "INSERT INTO login (name, email, password) VALUES (?, ?, ?)";
-  const values = [name, email, password];
 
-  db.query(sql, values, (err, data) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: "Registration failed" });
-    }
-    return res.status(201).json({ message: "Registration successful" });
-  });
+  try {
+    const sql = "INSERT INTO login (name, email, password) VALUES (?, ?, ?)";
+    const values = [name, email, password];
+
+    db.query(sql, values, (err, data) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ error: "Registration failed. Please try again later." });
+      }
+      return res.status(201).json({ message: "Registration successful" });
+    });
+  } catch (error) {
+    console.error('Error:', error);
+    return res.status(500).json({ error: "An error occurred while processing your request." });
+  }
 });
 
-app.post('/login', (req, res) => {
-  const { email, password } = req.body;
-  const sql = "SELECT * FROM login WHERE email = ? AND password = ?";
-  const values = [email, password];
+const PORT = 8081;
 
-  db.query(sql, values, (err, results) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).json({ error: "An error occurred while processing your request." });
-    }
-
-    if (results.length === 1) {
-    
-      return res.status(200).json({ message: "Login successful" });
-    } else {
-      
-      return res.status(401).json({ error: "Invalid email or password" });
-    }
-  });
-});
-
-app.listen(8081, () => {
-  console.log("Listening on port 8081");
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

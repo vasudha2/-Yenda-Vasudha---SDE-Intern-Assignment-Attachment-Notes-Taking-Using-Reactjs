@@ -30,29 +30,18 @@ const Register = () => {
       alert('Password and confirm password do not match.');
       return;
     }
-  
-    if (
-      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/.test(password)
-    ) {
+
+    if (!/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&*!])[A-Za-z\d@#$%^&*!]{8,}$/.test(password)) {
       alert('Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
       return;
     }
-  
+
     if (!/^\S+@\S+\.\S+$/.test(email)) {
       alert('Invalid email format. Please enter a valid email address.');
       return;
     }
-  
+
     try {
-      
-      const userExistsResponse = await fetch(`http://localhost:8081/user?email=${email}`);
-      const userExistsData = await userExistsResponse.json();
-  
-      if (userExistsData.exists) {
-        alert('User with the same email already exists.');
-        return;
-      }
-  
       const response = await fetch('http://localhost:8081/user', {
         method: 'POST',
         headers: {
@@ -60,19 +49,24 @@ const Register = () => {
         },
         body: JSON.stringify({ name, email, password }),
       });
-  
+
+      const responseData = await response.json();
+
       if (response.ok) {
         alert('Registration successful!');
         window.location.href = '/'; 
       } else {
-        alert('Registration failed.');
+        if (responseData.error) {
+          alert(responseData.error);
+        } else {
+          alert('Registration failed.');
+        }
       }
     } catch (error) {
       console.error('Error:', error);
       alert('An error occurred while registering.');
     }
   };
-  
 
   return (
     <div className='main'>
